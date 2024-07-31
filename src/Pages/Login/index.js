@@ -1,25 +1,33 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../Store/actions/authActions';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import './Login.css';
 
 const Login = () => {
     const [formData, setFormData] = useState({
         username: '',
         password: '',
     });
-    const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
-
+    const [showPassword, setShowPassword] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { isAuthenticated, error } = useSelector(state => ({
+        isAuthenticated: state.auth.isAuthenticated,
+        error: state.auth.error,
+    }));
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/drones');
+        }
+        console.log("error", error)
+    }, [isAuthenticated, navigate, error]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(loginUser(formData));
-        localStorage.setItem('isAuthenticated', true);
-        navigate('/drones');
     };
 
     const handleChange = (e) => {
@@ -62,6 +70,7 @@ const Login = () => {
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
                     </div>
+                    {error && <p className="error-message">{error}</p>}
                     <button className="submit-button" type="submit">Submit</button>
                 </form>
             </div>

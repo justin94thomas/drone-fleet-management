@@ -40,6 +40,11 @@ body {
     display: inline-block;
 }
 
+.error-message {
+    color: #dc3545;
+    margin-top: 1rem;
+}
+
 .password-group {
     position: relative;
 }
