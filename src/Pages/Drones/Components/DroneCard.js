@@ -27,7 +27,7 @@ const DroneCard = ({ drone }) => {
     return (
         <>
             <Card className="drone-card" key={drone.id}>
-                <CardContent onClick={() => navigate(`/drones/${drone.id}`)}>
+                <CardContent onClick={() => navigate(`/drones/${drone.id}`, { state: { drone: drone } })}>
                     <div className='drone-detail'>
                         <Typography gutterBottom variant="h5" component="div" className='drone-name'>
                             {drone.id}
@@ -39,12 +39,12 @@ const DroneCard = ({ drone }) => {
                         className={drone?.status === 'Available' ? "status-green" : drone?.status === 'In-flight' ? "status-blue" : "status-red"}>
                         {drone.status}
                     </Typography>
-                    <Typography variant='body2' color="text.secondary">
-                        <strong>Flight Hours: </strong>{drone.flight_hours}
+                    <Typography variant='body2' color="text.secondary" className='drone-card-label'>
+                        <strong>Flight Hours </strong>{drone.flight_hours}
                     </Typography>
                     <br />
-                    <Typography variant='body2' color="text.secondary">
-                        <span>Battery: </span><span style={{ float: 'right' }}>{drone.battery_status}%</span>
+                    <Typography variant='body2' color="text.secondary" className='drone-card-label2'>
+                        <span>Battery </span><span style={{ float: 'right' }}>{drone.battery_status}%</span>
                         <BorderLinearProgress variant="determinate" value={drone.battery_status} />
                     </Typography>
                 </CardContent>

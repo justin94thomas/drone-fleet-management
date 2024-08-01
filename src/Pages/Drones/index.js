@@ -16,7 +16,7 @@ const Drone = () => {
     return (
         <Grid container spacing={2} className='drone-main'>
             {drones.map(drone => (
-                <Grid item xs={12} lg={3} className='drone-cards'>
+                <Grid item xs={12} lg={3} key={drone?.id} className='drone-cards'>
                     <DroneCard drone={drone} />
                 </Grid>
             ))}

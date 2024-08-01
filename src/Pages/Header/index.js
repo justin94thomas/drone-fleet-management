@@ -23,7 +23,7 @@ const Header = () => {
     return (
         <AppBar position="static" className='header-appbar'>
             <Toolbar>
-                <Grid container xs={12} className='header-main'>
+                <Grid container className='header-main'>
                     <Grid item xs={10} className='header-leftbar'>
                         <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => <Navigate to={'/drone'} replace />}>
                             <img src={DoneImage} style={{ width: '50px' }} alt="logo" />

@@ -16,6 +16,8 @@
 
 .drone-name {
     font-weight: 600 !important;
+    font-size: 18px !important;
+    text-transform: capitalize !important;
 }
 
 .status-green {
@@ -41,9 +43,59 @@ hr {
     width: 95px;
 }
 
+.card-image {
+    width: 100%;
+}
+
+.drone-details-div {
+    text-align: center;
+    margin-top: 1rem;
+    height: 50%;
+}
+
+.drone-content-title {
+    font-size: 16px !important;
+    text-align: left;
+    font-weight: 500;
+}
+
+.drone-details-map {
+    margin-top: 1rem;
+    height: 50%;
+}
+
 .drone-detail {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 2.5rem;
+}
+
+
+.drone-card-label2 {
+    font-size: 12px !important;
+    color: grey !important;
+}
+
+/* Card Details */
+
+.card-details-main {
+    padding: 16px;
+}
+
+.details-card {
+    height: 100%;
+}
+
+@media screen and (max-width: 840px) {
+
+    .card-details-sec1,
+    .card-details-sec2 {
+        height: auto !important;
+    }
+}
+
+.card-label1 {
+    font-weight: 600 !important;
+    font-size: 16px !important;
 }
