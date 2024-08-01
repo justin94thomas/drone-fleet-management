@@ -46,13 +46,16 @@
 
     - Install Dependencies:
  ### `npm install`
-    **Open terminal window:**
+
+Open terminal window:
+
  ### `npm start` or `yarn start`
 
 ## Login Credentials:
     - Username: admin
     - Password: password123
-    **Click on Submit**
+
+Click on Submit
 
 ## Navigate the application:
     **You can now view the drones available along with some minor details of the drones in the fleet**
@@ -63,13 +66,24 @@
 ## Prerequisites:
     - Docker Desktop Application. Download from (https://docs.docker.com/desktop/install/windows-install/)
     
-    **Open terminal window:**
+Open terminal window:
 Create a Dockerfile and add the following code:
 
-    `FROM node:18-alpine
+    FROM node:18-alpine
     WORKDIR /app
     COPY package.json .
     RUN npm install
     COPY . .
     EXPOSE 3000
-    CMD ["npm", "start"]`
+    CMD ["npm", "start"]
+
+Run the following command in terminal window:
+### `docker build -t react-app:dev .`
+
+Once the build file completes check if docker image is created or not, you can use the following command to check:
+### `docker images`
+
+Now run the following code to run your application.
+### `docker run -p 3000:3000 *IMAGE ID*`
+
+Click on the Port:3000 Link to run the application.
