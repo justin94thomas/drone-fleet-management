@@ -81,10 +81,17 @@ hr {
 
 .card-details-main {
     padding: 16px;
+    position: relative;
 }
 
 .details-card {
     height: 100%;
+}
+
+.go-back {
+    position: absolute !important;
+    right: 2rem;
+    top: 3rem;
 }
 
 @media screen and (max-width: 840px) {

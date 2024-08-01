@@ -28,7 +28,7 @@ const Header = () => {
                         <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => <Navigate to={'/drone'} replace />}>
                             <img src={DoneImage} style={{ width: '50px' }} alt="logo" />
                         </IconButton>
-                        <Typography variant="h6" style={{ cursor: 'pointer' }} onClick={() => <Navigate to={'/drone'} replace />}>
+                        <Typography variant="h6" style={{ cursor: 'pointer' }} className='navbar' onClick={() => <Navigate to={'/drone'} replace />}>
                             Drone Fleet Management
                         </Typography>
                     </Grid>

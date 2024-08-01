@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ReactDOMServer from 'react-dom/server';
-import { Grid, Card, CardContent, Typography } from '@mui/material';
+import { Grid, Card, CardContent, Typography, IconButton } from '@mui/material';
 import { images } from "../../../Setup/assets";
 import { styled } from '@mui/material/styles';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import { IoIosCloseCircle } from "react-icons/io";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../drones.css';
@@ -27,6 +28,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 
 const DroneDetails = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const { drone } = location.state || {};
     const [cardUI, setCardUI] = useState({
         height: window.innerHeight,
@@ -51,9 +53,8 @@ const DroneDetails = () => {
                 mapContainerRef.current.style.height = `${mapContainerHeight}px`;
             }
         }
-
         window.addEventListener('resize', updateScreenSize);
-        updateScreenSize(); // Initial update
+        updateScreenSize();
         return () => {
             window.removeEventListener('resize', updateScreenSize);
         };
@@ -61,7 +62,8 @@ const DroneDetails = () => {
 
     const { last_known_location = [0, 0], battery_status, id, status, current_mission, flight_hours, maintenance_logs } = drone || {};
     const [latitude, longitude] = last_known_location;
-    console.log("cardUI.mapHeight", cardUI.mapHeight)
+
+
     const iconHtml = ReactDOMServer.renderToStaticMarkup(
         <div style={{ color: 'red', fontSize: '24px' }}>
             <FaMapMarkerAlt />
@@ -77,6 +79,9 @@ const DroneDetails = () => {
     return (
         <Grid container spacing={2} className='card-details-main'>
             <Grid item xs={12} lg={3} md={3} className='card-details-sec1' style={{ height: `${cardUI.height - 80}px`, overflow: 'hidden' }}>
+                <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => navigate(`/drones`)} className='go-back'>
+                    < IoIosCloseCircle />
+                </IconButton>
                 <Card className='details-card' style={{ height: '100%', overflow: 'hidden' }}>
                     <CardContent>
                         <div className='drone-details-div'>
@@ -117,13 +122,13 @@ const DroneDetails = () => {
                 <Card className='details-card' style={{ height: '100%', overflow: 'hidden' }}>
                     <CardContent>
                         <Grid container spacing={2}>
-                            <Grid item lg={3} md={4} sm={6} xs={12}>
+                            <Grid item lg={3} md={3} sm={6} xs={12}>
                                 <SmallCard label={'Status'} value={status} status={status} />
                             </Grid>
-                            <Grid item lg={3} md={4} sm={6} xs={12}>
+                            <Grid item lg={3} md={3} sm={6} xs={12}>
                                 <SmallCard label={'Current Mission'} value={current_mission} />
                             </Grid>
-                            <Grid item lg={3} md={4} sm={6} xs={12}>
+                            <Grid item lg={3} md={3} sm={6} xs={12}>
                                 <SmallCard label={'Flight Hours'} value={flight_hours} />
                             </Grid>
                         </Grid>
