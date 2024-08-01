@@ -39,51 +39,60 @@
     - VS Code Editor
 
 ## Setup Instructions:
-    - Clone the Repository:
-    **Open terminal window:**
+1. **Clone the Repository**
+
+    Open terminal window:
+
  ### `git clone https://github.com/justin94thomas/drone-fleet-management`
  ### `cd drone-fleet-management`
 
-    - Install Dependencies:
+2. **Install Dependencies**
  ### `npm install`
 
-Open terminal window:
+    Open terminal window:
 
  ### `npm start` or `yarn start`
 
+3. **Use the following credentials to login**
 ## Login Credentials:
     - Username: admin
     - Password: password123
 
 Click on Submit
 
-## Navigate the application:
+4. **Navigate the application**
+
     **You can now view the drones available along with some minor details of the drones in the fleet**
     - Click on the drone card to view the its details.
     - Drone preview shows detailed information regarding the activity of the drone.
+
 
 # Docker Instructions:
 ## Prerequisites:
     - Docker Desktop Application. Download from (https://docs.docker.com/desktop/install/windows-install/)
     
 Open terminal window:
-Create a Dockerfile and add the following code:
 
-    FROM node:18-alpine
-    WORKDIR /app
-    COPY package.json .
-    RUN npm install
-    COPY . .
-    EXPOSE 3000
-    CMD ["npm", "start"]
-
-Run the following command in terminal window:
+Run the following command in terminal window
 ### `docker build -t react-app:dev .`
 
 Once the build file completes check if docker image is created or not, you can use the following command to check:
+
 ### `docker images`
 
 Now run the following code to run your application.
 ### `docker run -p 3000:3000 *IMAGE ID*`
 
-Click on the Port:3000 Link to run the application.
+The application will be available at http://localhost:3000.
+
+# Troubleshooting
+
+## Common Issues:
+    Build Failures: Ensure that all dependencies are correctly installed and specified in package.json.
+    Port Conflicts: Check if port 3000 is already in use on your machine.
+    Permissions Issues: Ensure proper file permissions for Docker 
+
+# Contact
+   - Author: Justin Thomas
+   - Email: justin19.94thomas@gmail.com
+   - GitHub: justin94thomas
