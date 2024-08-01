@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Coding Challenge: Enhanced Drone Fleet Management Interface
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Objective:** Develop a web interface to display and manage the status and details of a drone fleet, including an overview and detailed stats for each drone, along with user authentication.
 
-## Available Scripts
+## Requirements:
 
-In the project directory, you can run:
+1. **User Authentication:**
+    - Implement a simple user login system.
+    - Use a preconfigured JSON file to authenticate users (e.g., username and password).
+2. **Drone Fleet Overview:**
+    - Display a summary list of all drones in the fleet with basic information (e.g., drone ID, status).
+    - Allow users to click on a drone to view detailed information.
+3. **Drone Details View:**
+    - Show detailed stats for each drone when selected, including:
+        - Total flight hours
+        - Maintenance logs
+        - Battery status
+        - Last known location
+        - Current mission (if any)
+4. **Maintenance Management:**
+    - Add a section to display maintenance activities, including:
+        - Date of maintenance
+        - Description of maintenance performed
+        - Technician name
+5. **Styling:**
+    - Apply a clean, professional design using CSS. Use a modern UI framework like Bootstrap or Tailwind CSS, the choice is up to you.
+    - Ensure the interface is well-organized and user-friendly on a PC.
+6. **Read-Only Data:**
+    - All data should be retrievable from the JSON file and displayed on the dashboard but should not be adjustable through the dashboard.
+7. **Dockerization:**
+    - Dockerize the application to ensure it can be easily set up and run on any environment.
+    - Include a `Dockerfile` and `docker-compose.yml` if necessary.
 
-### `yarn start`
+# Getting Started:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Prerequisites:
+    - Node.js (v18 or later)
+    - Docker
+    - VS Code Editor
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup Instructions:
+    - Clone the Repository:
+    **Open terminal window:**
+ ### `git clone https://github.com/justin94thomas/drone-fleet-management`
+ ### `cd drone-details-app`
 
-### `yarn test`
+    - Install Dependencies:
+ ### `npm install`
+    **Open terminal window:**
+ ### `npm start` or `yarn start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
