@@ -70,6 +70,7 @@ Click on Submit
 # Docker Instructions:
 ## Prerequisites:
     - Docker Desktop Application. https://docs.docker.com/desktop/install/windows-install
+    - Create a .dockerignore file and add "node_modules" in it.
     
 Open terminal window:
 
