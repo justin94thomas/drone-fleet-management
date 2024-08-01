@@ -42,12 +42,34 @@
     - Clone the Repository:
     **Open terminal window:**
  ### `git clone https://github.com/justin94thomas/drone-fleet-management`
- ### `cd drone-details-app`
+ ### `cd drone-fleet-management`
 
     - Install Dependencies:
  ### `npm install`
     **Open terminal window:**
  ### `npm start` or `yarn start`
 
+## Login Credentials:
+    - Username: admin
+    - Password: password123
+    **Click on Submit**
 
+## Navigate the application:
+    **You can now view the drones available along with some minor details of the drones in the fleet**
+    - Click on the drone card to view the its details.
+    - Drone preview shows detailed information regarding the activity of the drone.
 
+# Docker Instructions:
+## Prerequisites:
+    - Docker Desktop Application. Download from (https://docs.docker.com/desktop/install/windows-install/)
+    
+    **Open terminal window:**
+Create a Dockerfile and add the following code:
+
+    `FROM node:18-alpine
+    WORKDIR /app
+    COPY package.json .
+    RUN npm install
+    COPY . .
+    EXPOSE 3000
+    CMD ["npm", "start"]`
