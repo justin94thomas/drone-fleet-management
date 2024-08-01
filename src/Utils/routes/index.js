@@ -1,11 +1,11 @@
 import React from 'react';
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Box } from '@mui/material';
 import Login from '../../Pages/Login';
+import Header from '../../Pages/Header';
 import Drone from '../../Pages/Drones';
 import DroneDetails from '../../Pages/Drones/Components/Details';
-import Header from '../../Pages/Header';
-import { Box } from '@mui/material';
 
 const Layout = () => {
     return (

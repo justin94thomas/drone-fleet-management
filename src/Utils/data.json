@@ -10,7 +10,7 @@
             "id": "Drone1",
             "status": "Available",
             "flight_hours": 120,
-            "battery_status": "80%",
+            "battery_status": 80,
             "last_known_location": [
                 40.712776,
                 -74.005974
@@ -33,7 +33,7 @@
             "id": "Drone2",
             "status": "In-flight",
             "flight_hours": 200,
-            "battery_status": "50%",
+            "battery_status": 50,
             "last_known_location": [
                 34.052235,
                 -118.243683
@@ -56,7 +56,7 @@
             "id": "Drone3",
             "status": "Maintenance",
             "flight_hours": 95,
-            "battery_status": "60%",
+            "battery_status": 60,
             "last_known_location": [
                 41.878113,
                 -87.629799

@@ -3,8 +3,47 @@
     overflow: hidden;
     flex-direction: row;
     gap: 20px;
+    cursor: pointer;
 }
 
 .drone-main {
     padding: 16px
+}
+
+.drone-card {
+    width: 100%;
+}
+
+.drone-name {
+    font-weight: 600 !important;
+}
+
+.status-green {
+    color: green !important;
+    font-weight: 600 !important;
+}
+
+.status-red {
+    color: red !important;
+    font-weight: 600 !important;
+}
+
+.status-blue {
+    color: blue !important;
+    font-weight: 600 !important;
+}
+
+hr {
+    border: 0.5px solid lightgray;
+}
+
+.drone-image {
+    width: 95px;
+}
+
+.drone-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 2.5rem;
 }

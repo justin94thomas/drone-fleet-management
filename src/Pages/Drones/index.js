@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadDrones } from '../../Store/actions/droneActions';
+import { Grid } from '@mui/material';
 import DroneCard from './Components/DroneCard';
 import './drones.css';
 
@@ -13,13 +14,13 @@ const Drone = () => {
     }, [dispatch]);
 
     return (
-        <div className='drone-main'>
-            <div className='drone-cards'>
-                {drones.map(drone => (
+        <Grid container spacing={2} className='drone-main'>
+            {drones.map(drone => (
+                <Grid item xs={12} lg={3} className='drone-cards'>
                     <DroneCard drone={drone} />
-                ))}
-            </div>
-        </div>
+                </Grid>
+            ))}
+        </Grid>
     )
 }
 export default Drone;
