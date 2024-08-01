@@ -1,0 +1,22 @@
+.header-main {
+    display: flex;
+}
+
+.header-appbar {
+    max-height: 9vh;
+    overflow: hidden
+}
+
+.header-leftbar {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.header-rightbar {
+    justify-content: right;
+    display: flex;
+    gap: 10px;
+    align-items: center
+}

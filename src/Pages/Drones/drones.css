@@ -1,0 +1,10 @@
+.drone-cards {
+    display: flex;
+    overflow: hidden;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.drone-main {
+    padding: 16px
+}
