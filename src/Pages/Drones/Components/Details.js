@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import ReactDOMServer from 'react-dom/server';
 import { Grid, Card, CardContent, Typography } from '@mui/material';
@@ -30,24 +30,38 @@ const DroneDetails = () => {
     const { drone } = location.state || {};
     const [cardUI, setCardUI] = useState({
         height: window.innerHeight,
-        width: window.innerWidth
+        width: window.innerWidth,
+        mapHeight: null
     });
-    const [latitude, longitude] = drone['last_known_location'] || [0, 0];
+
+    const mapContainerRef = useRef(null);
 
     useEffect(() => {
         function updateScreenSize() {
+            const newHeight = window.innerHeight;
+            const mapContainerHeight = newHeight * 0.4;
+
             setCardUI({
-                height: window.innerHeight,
-                width: window.innerWidth
+                height: newHeight,
+                width: window.innerWidth,
+                mapHeight: mapContainerHeight
             });
+
+            if (mapContainerRef.current) {
+                mapContainerRef.current.style.height = `${mapContainerHeight}px`;
+            }
         }
 
         window.addEventListener('resize', updateScreenSize);
+        updateScreenSize(); // Initial update
         return () => {
             window.removeEventListener('resize', updateScreenSize);
         };
     }, []);
 
+    const { last_known_location = [0, 0], battery_status, id, status, current_mission, flight_hours, maintenance_logs } = drone || {};
+    const [latitude, longitude] = last_known_location;
+    console.log("cardUI.mapHeight", cardUI.mapHeight)
     const iconHtml = ReactDOMServer.renderToStaticMarkup(
         <div style={{ color: 'red', fontSize: '24px' }}>
             <FaMapMarkerAlt />
@@ -67,19 +81,23 @@ const DroneDetails = () => {
                     <CardContent>
                         <div className='drone-details-div'>
                             <Typography gutterBottom variant="h5" component="div" className='drone-name'>
-                                {drone.id}
+                                {id}
                             </Typography>
-                            <img src={images[drone.id]} alt={'drone-img'} className='card-image' />
+                            <img src={images[id]} alt={'drone-img'} className='card-image' />
                             <Typography variant='body2' color="text.secondary" className='drone-card-label2' style={{ textAlign: 'left' }}>
-                                <span>Battery </span><span style={{ float: 'right' }}>{drone.battery_status}%</span>
-                                <BorderLinearProgress variant="determinate" value={drone.battery_status} />
+                                <span>Battery </span><span style={{ float: 'right' }}>{battery_status}%</span>
+                                <BorderLinearProgress variant="determinate" value={battery_status} />
                             </Typography>
                         </div>
-                        <div className='drone-details-map'>
+                        <div className='drone-details-map' ref={mapContainerRef}>
                             <Typography gutterBottom variant="h5" component="div" className='drone-content-title'>
                                 Last Known Location
                             </Typography>
-                            <MapContainer center={[latitude, longitude]} zoom={13} style={{ height: '40vh', width: '100%' }}>
+                            {cardUI?.mapHeight && <MapContainer
+                                center={[latitude, longitude]}
+                                zoom={13}
+                                style={{ height: `${cardUI.mapHeight - 35}px`, width: '100%' }}
+                            >
                                 <TileLayer
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -89,7 +107,8 @@ const DroneDetails = () => {
                                         Last Known Location
                                     </Popup>
                                 </Marker>
-                            </MapContainer>
+                            </MapContainer>}
+
                         </div>
                     </CardContent>
                 </Card>
@@ -99,20 +118,20 @@ const DroneDetails = () => {
                     <CardContent>
                         <Grid container spacing={2}>
                             <Grid item lg={3} md={4} sm={6} xs={12}>
-                                <SmallCard label={'Status'} value={drone.status} status={drone.status} />
+                                <SmallCard label={'Status'} value={status} status={status} />
                             </Grid>
                             <Grid item lg={3} md={4} sm={6} xs={12}>
-                                <SmallCard label={'Current Mission'} value={drone.current_mission} />
+                                <SmallCard label={'Current Mission'} value={current_mission} />
                             </Grid>
                             <Grid item lg={3} md={4} sm={6} xs={12}>
-                                <SmallCard label={'Flight Hours'} value={drone.flight_hours} />
+                                <SmallCard label={'Flight Hours'} value={flight_hours} />
                             </Grid>
                         </Grid>
                         <div className='drone-details-div'>
                             <Typography gutterBottom variant="h5" component="div" className='drone-content-title'>
                                 Maintenance Logs
                             </Typography>
-                            <MaintenanceTable data={drone['maintenance_logs']} />
+                            <MaintenanceTable data={maintenance_logs} />
                         </div>
                     </CardContent>
                 </Card>

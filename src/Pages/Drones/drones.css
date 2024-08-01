@@ -61,7 +61,7 @@ hr {
 
 .drone-details-map {
     margin-top: 1rem;
-    height: 50%;
+    height: 50% !important;
 }
 
 .drone-detail {
