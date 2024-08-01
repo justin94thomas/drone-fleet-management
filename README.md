@@ -63,13 +63,13 @@ Click on Submit
 4. **Navigate the application**
 
     **You can now view the drones available along with some minor details of the drones in the fleet**
-    - Click on the drone card to view the its details.
+    - Click on the drone card to view its details.
     - Drone preview shows detailed information regarding the activity of the drone.
 
 
 # Docker Instructions:
 ## Prerequisites:
-    - Docker Desktop Application. Download from (https://docs.docker.com/desktop/install/windows-install/)
+    - Docker Desktop Application. https://docs.docker.com/desktop/install/windows-install
     
 Open terminal window:
 
